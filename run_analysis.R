@@ -288,3 +288,4 @@ AveragesByActivity
 write.table(AveragesByActivity, "AveragesByActivity.txt")
 
 ## END
+ 
