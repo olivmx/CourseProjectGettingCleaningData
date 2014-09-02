@@ -33,7 +33,7 @@ for(i in 1:length(selectedCols)) {
 }
 selectedColNums <- as.vector(selectedColNums)
 
-## 2.4 filter by col names names with "std()" and "mean()" on the name with a regular expression 
+## 2.4 filter by col names names with "std" and "mean" on the name with a regular expression 
 selectedSet <- fullSet[,selectedColNums]
 
 ## 2.5 make sure selectedSet has only std() or mean() columns, should return only 79 column names
@@ -59,12 +59,13 @@ act_test<-as.vector(act_test)
 full_act<-rbind(act_train,act_test)
 colnames(full_act)<-c("ACTIVITY")
 
-## 3.2 add two columns with subjects and activities (_sub & _act)
-fullSet<-cbind(fullSet,full_sub,full_act)
+## 3.2 add two columns with subjects and activities (_sub & _act) at the beginninng
+fullSet<-cbind(full_sub,full_act,fullSet)
 dim(fullSet)
 
-## 3.3 add two columns with subjects and activities (_sub & _act) to the selected set of columns
-selectedSet<-cbind(selectedSet,full_sub,full_act)
+## 3.3 add two columns with subjects and activities (_sub & _act) at the beginning of
+## the selected set of columns
+selectedSet<-cbind(full_sub,full_act,selectedSet)
 dim(selectedSet)
 
 ## 3.4 read activity descriptions
